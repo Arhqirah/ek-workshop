@@ -1,6 +1,55 @@
-import * as React from "react"
+import { forwardRef } from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
+
+const alertVariants = cva(
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4",
+  {
+    variants: {
+      variant: {
+        default:     "bg-background text-foreground border-border",
+        success:     "border-success/50 text-success bg-success/10",
+        destructive: "border-destructive/50 text-destructive bg-destructive/10",
+        warning:     "border-yellow-500/50 text-yellow-700 bg-yellow-50 dark:text-yellow-400 dark:bg-yellow-950",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+const Alert = forwardRef(({ className, variant, ...props }, ref) => (
+  <div
+    ref={ref}
+    role="alert"
+    className={cn(alertVariants({ variant }), className)}
+    {...props}
+  />
+))
+Alert.displayName = "Alert"
+
+const AlertTitle = forwardRef(({ className, ...props }, ref) => (
+  <h5
+    ref={ref}
+    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
+    {...props}
+  />
+))
+AlertTitle.displayName = "AlertTitle"
+
+const AlertDescription = forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm [&_p]:leading-relaxed", className)}
+    {...props}
+  />
+))
+AlertDescription.displayName = "AlertDescription"
+
+export { Alert, AlertTitle, AlertDescription }
+
+
 
 /**
  * Alert Component - Workshop Task

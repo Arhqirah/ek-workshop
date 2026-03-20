@@ -1,5 +1,17 @@
 import { Button } from "@/components/ui/button"
 import {
+  Dialog,
+  DialogTrigger,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
+import {
   Card,
   CardContent,
   CardDescription,
@@ -7,6 +19,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+
+
 
 export default function Home() {
   return (
@@ -39,12 +54,12 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <Button variant="default">Default</Button>
                 {/* TODO: Uncomment these after adding variants in button.jsx */}
-                {/* <Button variant="secondary">Secondary</Button> */}
-                {/* <Button variant="success">Success</Button> */}
-                {/* <Button variant="danger">Danger</Button> */}
-                {/* <Button variant="outline">Outline</Button> */}
-                {/* <Button variant="ghost">Ghost</Button> */}
-                {/* <Button variant="link">Link</Button> */}
+                { <Button variant="secondary">Secondary</Button>}
+                {<Button variant="success">Success</Button> }
+                {<Button variant="danger">Danger</Button>}
+                {<Button variant="outline">Outline</Button>}
+                {<Button variant="ghost">Ghost</Button>}
+                {<Button variant="link">Link</Button>}
               </div>
             </CardContent>
             <CardFooter>
@@ -71,16 +86,55 @@ export default function Home() {
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary font-medium">2.</span>
-                    <span>
-                      Build a Dialog component using Radix UI primitives
-                    </span>
-                  </li>
+  <span className="text-primary font-medium">2.</span>
+  <span className="flex flex-col gap-2">
+    Build a Dialog component using Radix UI primitives
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button size="sm" variant="outline">Open Dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+          <DialogDescription>This action cannot be undone.</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+          <Button variant="danger">Confirm</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  </span>
+</li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-medium">3.</span>
                     <span>
-                      Create an Alert component with CVA variants and
-                      subcomponents
+                    <li className="flex items-start gap-2">
+  <span className="text-primary font-medium">3.</span>
+  <span className="flex flex-col gap-2">
+    Create an Alert component with CVA variants and subcomponents
+    <div className="space-y-2">
+      <Alert>
+        <AlertTitle>Default</AlertTitle>
+        <AlertDescription>This is a default alert.</AlertDescription>
+      </Alert>
+      <Alert variant="success">
+        <AlertTitle>Success!</AlertTitle>
+        <AlertDescription>Your changes have been saved.</AlertDescription>
+      </Alert>
+      <Alert variant="destructive">
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+      </Alert>
+      <Alert variant="warning">
+        <AlertTitle>Warning</AlertTitle>
+        <AlertDescription>This action cannot be undone.</AlertDescription>
+      </Alert>
+    </div>
+  </span>
+</li>
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
